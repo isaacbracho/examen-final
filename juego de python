@@ -1,1 +1,148 @@
+import time
 
+def jugar_juego():
+    print("Estás en una fiesta cuando de repente te raptan y apareces en un lugar extraño.")
+    print("Caminas para escapar y todo se oscurece. Encuentras tres objetos: una llave, una linterna o una escopeta.")
+    print("¿Con cuál te quedas? (Escribe 'llave', 'linterna' o 'escopeta')")
+
+    eleccion_inicial = input().lower()
+
+    # --- CAMINO DE LA LLAVE ---
+    if eleccion_inicial == "llave":
+        print("\nCoges la llave y encuentras una cerradura en la oscuridad. Por un instante, el lugar se ilumina... ¡y ves un espanto!")
+        time.sleep(2)
+        print("¿Quieres CORRER o ESCONDERTE detrás de una silla?")
+        eleccion_llave_1 = input().lower()
+
+        if eleccion_llave_1 == "correr":
+            print("\nCorres tan rápido como puedes, y el espanto ya no está. ¡Encuentras una salida, felicidades!")
+        elif eleccion_llave_1 == "esconderte":
+            print("\nTe escondes detrás de una silla vieja. El espanto te pasa de largo sin verte. ¡Uf, qué suerte!")
+            time.sleep(2)
+            print("Sigues adelante y llegas a una habitación con una caja fuerte y un teclado numérico.")
+            print("Ves una nota que dice: 'El número de veces que el espanto te ha pasado de largo'.")
+            
+            intento_caja = 0
+            while intento_caja < 3:
+                codigo = input("Ingresa el código de la caja fuerte: ")
+                if codigo == "1":
+                    print("\n¡Correcto! La caja fuerte se abre. Contiene un diario viejo y un mapa.")
+                    time.sleep(2)
+                    print("El diario tiene una última entrada: 'La única salida real está detrás de la puerta con la SERPIENTE tallada, no la del LEÓN'.")
+                    eleccion_puertas = input("Encuentras dos puertas: una con una serpiente 🐍 y otra con un león 🦁. ¿Cuál eliges? (Escribe 'serpiente' o 'león') ").lower()
+                    
+                    if eleccion_puertas == "serpiente":
+                        print("\nAbres la puerta de la serpiente y te encuentras en el exterior. ¡Has escapado! ¡Felicidades!")
+                    elif eleccion_puertas == "león":
+                        print("\nAbres la puerta del león. Un rugido resuena en la habitación y el espanto te encuentra. Fin del juego.")
+                    else:
+                        print("\nDecisión no válida. El espanto te encuentra. Fin del juego.")
+                    break
+                else:
+                    intento_caja += 1
+                    if intento_caja < 3:
+                        print("Código incorrecto. Te quedan", 3 - intento_caja, "intentos.")
+                    else:
+                        print("Código incorrecto. La caja fuerte se bloquea. El espanto regresa y te encuentra. Fin del juego.")
+        else:
+            print("\nDecisión no válida. El espanto te encuentra. Fin del juego.")
+
+    # --- CAMINO DE LA LINTERNA ---
+    elif eleccion_inicial == "linterna":
+        print("\nEnciendes la linterna y ves un camino iluminado. De pronto, oyes que algo se cayó.")
+        time.sleep(2)
+        print("¿Quieres SEGUIR el camino o BUSCAR qué fue lo que hizo ruido?")
+        eleccion_linterna_1 = input().lower()
+
+        if eleccion_linterna_1 == "seguir":
+            print("\nSigues el camino iluminado. Aunque oyes ruido, confías en tu linterna.")
+            print("\nEncuentras una puerta con tres símbolos: ☀️, 🌙 y ⭐️. Debes elegir uno.")
+            time.sleep(2)
+            eleccion_simbolo = input("¿Cuál eliges? (Escribe 'sol', 'luna' o 'estrella') ").lower()
+
+            if eleccion_simbolo == "sol":
+                print("\nEl símbolo del sol se ilumina. Te teletransporta a un jardín soleado. ¡Has escapado!")
+            elif eleccion_simbolo == "luna":
+                print("\nEl símbolo de la luna te lleva a una habitación oscura. El espanto te encuentra. Fin del juego.")
+            elif eleccion_simbolo == "estrella":
+                print("\nEl símbolo de la estrella brilla intensamente. Encuentras un pasaje secreto y logras salir. ¡Felicidades!")
+            else:
+                print("\nElección no válida. La puerta se cierra para siempre. Fin del juego.")
+
+        elif eleccion_linterna_1 == "buscar":
+            print("\nDecides buscar el origen del ruido y encuentras un viejo baúl. Está cerrado con un candado con letras.")
+            print("Hay una pista escrita en la pared: 'Es el sonido del viento que te guía'.")
+            respuesta_baul = input("¿Qué palabra forma la pista? ").lower()
+
+            if respuesta_baul == "nose":
+                print("\n¡El candado se abre! Dentro hay un mapa detallado del lugar y una navaja. Con el mapa, encuentras la salida.")
+                print("Llegas a una gran sala. Al final, hay una escalera y un conducto de ventilación.")
+                eleccion_escape = input("¿Quieres ir por la ESCALERA o por el CONDUCTO? ").lower()
+                
+                if eleccion_escape == "escalera":
+                    print("\nSubes la escalera. Oyes una voz que te llama desde un pasillo. Te dice que la puerta de arriba está cerrada.")
+                    eleccion_voz = input("¿Quieres SEGUIR la voz o IGNORARLA y seguir subiendo? ").lower()
+                    if eleccion_voz == "seguir":
+                        print("\nSigues la voz y encuentras a una persona atraqpada. Te da una llave maestra. ¡Sales de allí! ¡Felicidades!")
+                    elif eleccion_voz == "ignorarla":
+                        print("\nIgnoras la voz y sigues subiendo. La puerta de arriba está cerrada. El espanto aparece detrás de ti. Fin del juego.")
+                    else:
+                        print("\nDecisión no válida. El espanto te encuentra. Fin del juego.")
+                elif eleccion_escape == "conducto":
+                    print("\nEntras al conducto de ventilación. Es un laberinto sin fin. Te pierdes y te quedas sin aire. Fin del juego.")
+                else:
+                    print("\nDecisión no válida. Te quedas inmóvil y el espanto te encuentra. Fin del juego.")
+            else:
+                print("\nRespuesta incorrecta. El espanto se acerca, atraído por el ruido. Fin del juego.")
+        else:
+            print("\nDecisión no válida. El espanto te encuentra. Fin del juego.")
+
+    # --- CAMINO DE LA ESCOPETA ---
+    elif eleccion_inicial == "escopeta":
+        print("\nCoges la escopeta. Encuentras un espanto, y hay una mesa detrás de ti.")
+        time.sleep(2)
+        print("¿Quieres BUSCAR detrás de la mesa o DISPARAR?")
+        eleccion_escopeta_1 = input().lower()
+
+        if eleccion_escopeta_1 == "buscar":
+            print("\nBuscas detrás de la mesa, encuentras balas y matas al espanto. ¡Encuentras una llave encima del espanto!")
+            print("\nAhora con la llave, llegas a un pasillo largo. Al final, ves una puerta y al lado hay un pergamino con un acertijo.")
+            time.sleep(2)
+            print("El acertijo dice: 'Tengo ciudades, pero no casas. Tengo montañas, pero no árboles. Tengo agua, pero no peces. ¿Qué soy?'")
+            acertijo = input("\nEscribe tu respuesta: ").lower()
+
+            if acertijo == "mapa":
+                print("\n¡Correcto! La puerta se abre. Te encuentras en un bosque, pero te das cuenta de que no sabes por dónde ir.")
+                print("Encuentras dos caminos: uno con huellas de animales y otro con huellas de zapatos. ")
+                eleccion_bosque = input("¿Qué camino tomas? (Escribe 'animales' o 'zapatos') ").lower()
+                
+                if eleccion_bosque == "animales":
+                    print("\nSigues las huellas de los animales. Te llevan a un arroyo y luego a una cueva. Un oso te ve y te persigue. Fin del juego.")
+                elif eleccion_bosque == "zapatos":
+                    print("\nSigues las huellas de los zapatos. Te llevan a una cabaña abandonada. Dentro, encuentras a una persona herida.")
+                    time.sleep(2)
+                    print("La persona te dice que hay una salida secreta en el sótano, pero no puede ayudarte a encontrarla.")
+                    eleccion_ayuda = input("¿Quieres AYUDAR a la persona o DEJARLA y buscar el sótano solo? ").lower()
+                    if eleccion_ayuda == "ayudar":
+                        print("\nAyudas a la persona a curar sus heridas. Agradecida, te da la llave del sótano. ¡Encuentras la salida y escapan juntos! ¡Felicidades!")
+                    elif eleccion_ayuda == "dejarla":
+                        print("\nLa dejas sola y buscas el sótano. Encuentras la puerta, pero está cerrada. El espanto te encuentra. Fin del juego.")
+                    else:
+                        print("\nDecisión no válida. El espanto te encuentra. Fin del juego.")
+                else:
+                    print("\nDecisión no válida. Te pierdes en el bosque. Fin del juego.")
+            else:
+                print("\nRespuesta incorrecta. De repente, una trampa de gas se activa y te desmayas. Fin del juego.")
+
+        elif eleccion_escopeta_1 == "disparar":
+            print("\nNo tienes balas. El espanto te encuentra. Fin del juego.")
+        else:
+            print("\nDecisión no válida. El espanto te encuentra. Fin del juego.")
+
+    else:
+        print("\nElección no válida. Te quedas inmóvil y un espanto te encuentra. Fin del juego.")
+
+    print("\n--- Fin del juego ---")
+
+# Para jugar, llama a la funcion:;
+jugar_juego()
